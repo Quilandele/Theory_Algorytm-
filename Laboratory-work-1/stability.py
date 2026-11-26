@@ -1,0 +1,53 @@
+def sub(num):
+    return str(num).translate(str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉"))
+
+
+def show(arr):
+    return "[" + ", ".join(f"{v}{sub(p)}" for v, p in arr) + "]"
+
+
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j][0] < arr[min_index][0]:
+                min_index = j
+        if min_index != i:
+            arr[i], arr[min_index] = arr[min_index], arr[i]
+        print(f"i={i}: {show(arr)}")
+    return arr
+
+
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j][0] > key[0]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+        print(f"i={i}: {show(arr)}")
+    return arr
+
+
+def check(name, result, value):
+    order = [p for v, p in result if v == value]
+    print(f"{name}: {show(result)}")
+    print(f"Порядок елементів {value}: {order}")
+    if order == sorted(order):
+        print("Порядок рівних елементів збережено")
+    else:
+        print("Порядок рівних елементів змінився: сортування нестійке")
+
+
+if __name__ == "__main__":
+    values = [21, 44, 44, 50, 63, 68, 97, 12, 15]
+    data = [(v, p) for p, v in enumerate(values)]
+
+    print("Початковий масив:", show(data))
+    print("\nСортування вибором:")
+    check("Результат", selection_sort(data.copy()), 44)
+
+    print("\nСортування вставками:")
+    check("Результат", insertion_sort(data.copy()), 44)
