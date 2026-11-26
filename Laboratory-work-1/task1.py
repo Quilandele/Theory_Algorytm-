@@ -33,14 +33,11 @@ def selection_sort(arr):
     return arr, comparisons, assignments
 
 
-if __name__ == "__main__":
-    my_list = [21, 44, 22, 50, 63, 68, 97, 12, 15]
-    print("Початковий масив:", my_list)
-    print("-" * 30)
-
-    sorted_list, comps, assigns = selection_sort(my_list.copy())
-
-    print("Сортування завершено.")
-    print("Фінальний відсортований масив:", sorted_list)
-    print(f"Загальна кількість порівнянь: {comps}")
-    print(f"Загальна кількість присвоєнь: {assigns}")
+my_list = [86, 36, 14, 50, 64, 21, 2, 83, 82]
+print("Початковий масив:", my_list)
+print("-" * 30)
+sorted_list, comps, assigns = selection_sort(my_list.copy())
+print("Сортування завершено.")
+print("Фінальний відсортований масив:", sorted_list)
+print(f"Загальна кількість порівнянь: {comps}")
+print(f"Загальна кількість присвоєнь: {assigns}")
