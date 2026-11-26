@@ -15,7 +15,7 @@ def selection_sort(arr):
                 min_index = j
         if min_index != i:
             arr[i], arr[min_index] = arr[min_index], arr[i]
-        print(f"i={i}: {show(arr)}")
+        print(f"  i={i}: {show(arr)}")
     return arr
 
 
@@ -27,7 +27,7 @@ def insertion_sort(arr):
             arr[j + 1] = arr[j]
             j -= 1
         arr[j + 1] = key
-        print(f"i={i}: {show(arr)}")
+        print(f"  i={i}: {show(arr)}")
     return arr
 
 
@@ -41,13 +41,11 @@ def check(name, result, value):
         print("Порядок рівних елементів змінився: сортування нестійке")
 
 
-if __name__ == "__main__":
-    values = [21, 44, 44, 50, 63, 68, 97, 12, 15]
-    data = [(v, p) for p, v in enumerate(values)]
+values = [86, 36, 36, 50, 64, 21, 2, 83, 82]
+data = [(v, p) for p, v in enumerate(values)]
 
-    print("Початковий масив:", show(data))
-    print("\nСортування вибором:")
-    check("Результат", selection_sort(data.copy()), 44)
-
-    print("\nСортування вставками:")
-    check("Результат", insertion_sort(data.copy()), 44)
+print("Початковий масив:", show(data))
+print("Сортування вибором:")
+check("Результат", selection_sort(data.copy()), 36)
+print("Сортування вставками:")
+check("Результат", insertion_sort(data.copy()), 36)
